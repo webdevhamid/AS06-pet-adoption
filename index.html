@@ -13,10 +13,100 @@
     <!-- stylesheet  -->
     <link rel="stylesheet" href="css/styles.css" />
     <title>Peddy - Adopt Your Pet</title>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "primary-color": "#0E7A81",
+              //   "secondary-color": "#F9F7F3",
+              //   "gray-color": "rgba(17, 17, 17, 0.05)",
+            },
+            fontFamily: {
+              lato: ["Lato", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
   </head>
-  <body>
+  <body class="font-lato">
     <header>
-      <h1 class="text-5xl">Hello World</h1>
+      <!-- navbar start  -->
+      <nav class="container mx-auto py-5">
+        <div class="navbar">
+          <div class="navbar-start">
+            <div class="dropdown">
+              <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />
+                </svg>
+              </div>
+              <!-- mobile menu  -->
+              <ul tabindex="0" class="menu-sm dropdown-content rounded-box z-[1] mt-3 p-2">
+                <li class="py-2">
+                  <a href="#" class="hover:text-primary-color transition">Home</a>
+                </li>
+                <li class="py-2">
+                  <a href="#" class="hover:text-primary-color transition">Shop</a>
+                </li>
+                <li class="py-2">
+                  <a href="#" class="hover:text-primary-color transition">Contact</a>
+                </li>
+              </ul>
+            </div>
+            <!-- Logo  -->
+            <a class="text-xl flex justify-center items-center gap-2 font-extrabold">
+              <img src="./images/logo.webp" alt="" />
+              <span class="text-3xl">Peddy</span>
+            </a>
+            <!-- Logo end  -->
+          </div>
+          <!-- Navar center start  -->
+          <div class="navbar-center hidden lg:flex">
+            <ul class="flex gap-8 text-gray-400 text-base font-normal px-1">
+              <li><a href="#" class="hover:text-primary-color transition">Home</a></li>
+              <li><a href="#" class="hover:text-primary-color transition">Shop</a></li>
+              <li><a href="#" class="hover:text-primary-color transition">Contact</a></li>
+            </ul>
+          </div>
+          <!-- Navar center end  -->
+
+          <!-- Navbar-end start  -->
+          <div class="navbar-end">
+            <a class="border p-3 rounded-full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                />
+              </svg>
+            </a>
+          </div>
+          <!-- Navbar-end end  -->
+        </div>
+      </nav>
+      <!-- navbar end  -->
     </header>
     <script src="js/main.js"></script>
   </body>
