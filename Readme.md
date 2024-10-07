@@ -1,1 +1,1 @@
-### Ped Adoption Website
+# Peddy - Pet Adoption Platform
