@@ -21,8 +21,9 @@
             colors: {
               "primary-color": "#0E7A81",
               //   "secondary-color": "#F9F7F3",
-              "gray-color": "rgba(19, 19, 19, 0.6)",
               "footer-color": "rgba(255, 255, 255, 0.9)",
+              "gray-color": "rgba(19, 19, 19, 0.6)",
+              "gray-color-2": "rgba(19, 19, 19, 0.7)",
             },
             fontFamily: {
               lato: ["Lato", "sans-serif"],
@@ -129,7 +130,7 @@
               of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.
             </p>
             <div>
-              <button>
+              <button class="mt-4">
                 <a href="#adopt-section" class="bg-primary-color py-4 px-8 rounded-xl text-white"
                   >View More</a
                 >
@@ -147,7 +148,7 @@
       <!-- Hero Section end  -->
     </header>
 
-    <main class="container mx-auto px-5">
+    <main class="container mx-auto">
       <!-- Adopt section start  -->
       <section id="adopt-section" class="py-10">
         <!-- adopt content start -->
@@ -160,32 +161,7 @@
         </div>
         <!-- adopt content end -->
         <!-- category start  -->
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-5">
-          <div
-            class="flex items-center gap-4 p-6 border justify-center rounded-2xl cursor-pointer hover:bg-[#0E7A811A] transition"
-          >
-            <img src="images/categories/dog.png" class="h-[50px]" alt="" />
-            <span class="font-extrabold text-2xl">Dogs</span>
-          </div>
-          <div
-            class="flex items-center gap-4 p-6 border justify-center rounded-2xl cursor-pointer hover:bg-[#0E7A811A] transition"
-          >
-            <img src="images/categories/cat.png" class="h-[50px]" alt="" />
-            <span class="font-extrabold text-2xl">Cats</span>
-          </div>
-          <div
-            class="flex items-center gap-4 p-6 border justify-center rounded-2xl cursor-pointer hover:bg-[#0E7A811A] transition"
-          >
-            <img src="images/categories/rabbit.png" class="h-[50px]" alt="" />
-            <span class="font-extrabold text-2xl">Rabbits</span>
-          </div>
-          <div
-            class="flex items-center gap-4 p-6 border justify-center rounded-2xl cursor-pointer hover:bg-[#0E7A811A] transition"
-          >
-            <img src="images/categories/bird.png" class="h-[50px]" alt="" />
-            <span class="font-extrabold text-2xl">Birds</span>
-          </div>
-        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-5" id="category-container"></div>
         <!-- category end  -->
       </section>
       <!-- Adopt section end  -->
@@ -199,12 +175,13 @@
         </div>
         <!-- section title + button end -->
         <!-- card start  -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-5">
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 py-5">
           <!-- card no information start  -->
-          <div class="border p-5 rounded-xl col-span-3 bg-gray-100 hidden">
-            <div
-              class="flex flex-col justify-center items-center text-center w-2/3 mx-auto h-full gap-5"
-            >
+          <div
+            class="border px-5 py-20 rounded-xl col-span-3 bg-gray-100 max-h-[500px] hidden"
+            id="category-not-found"
+          >
+            <div class="flex flex-col justify-center items-center text-center w-2/3 gap-5 mx-auto">
               <img src="./images/error.webp" alt="error-image" class="w-[150px]" />
               <h1 class="text-3xl font-bold">No Information Available</h1>
               <p>
@@ -215,78 +192,13 @@
             </div>
           </div>
           <!-- card no information end  -->
-          <!-- card 1 start -->
-          <div class="border p-5 rounded-xl">
-            <img src="images/pet.webp" alt="" />
-            <h2>Mister Tastosh</h2>
-            <ul>
-              <li>Breed: Golder Retriever</li>
-              <li>Birth: 2004</li>
-              <li>Gender: Female</li>
-              <li>Price: $199</li>
-            </ul>
-
-            <div class="divider"></div>
-            <div class="flex justify-between">
-              <button>Like</button>
-              <button>Adopt</button>
-              <button>Details</button>
-            </div>
-          </div>
-          <!-- card 1 end -->
-          <!-- card 2 start -->
-          <div class="border p-5 rounded-xl">
-            <img src="images/pet.webp" alt="" />
-            <h2>Mister Tastosh</h2>
-            <ul>
-              <li>Breed: Golder Retriever</li>
-              <li>Birth: 2004</li>
-              <li>Gender: Female</li>
-              <li>Price: $199</li>
-            </ul>
-
-            <div class="divider"></div>
-            <div class="flex justify-between">
-              <button>Like</button>
-              <button>Adopt</button>
-              <button>Details</button>
-            </div>
-          </div>
-          <!-- card 2 end -->
-          <!-- card 3 start -->
-          <div class="border p-5 rounded-xl">
-            <img src="images/pet.webp" alt="" />
-            <h2>Mister Tastosh</h2>
-            <ul>
-              <li>Breed: Golder Retriever</li>
-              <li>Birth: 2004</li>
-              <li>Gender: Female</li>
-              <li>Price: $199</li>
-            </ul>
-
-            <div class="divider"></div>
-
-            <div class="flex justify-between">
-              <button>Like</button>
-              <button>Adopt</button>
-              <button>Details</button>
-            </div>
-          </div>
-          <!-- card 3 end -->
+          <div
+            class="grid gap-6 lg:col-span-3 md:col-span-2 lg:grid-cols-3 md:grid-cols-2 grid-cols-1"
+            id="card-container"
+          ></div>
           <!-- card 4 start -->
-          <div class="border p-5 rounded-xl grid grid-cols-2 max-h-[460px] overflow-y-auto gap-3">
-            <img src="images/pet.webp" alt="" />
-            <img src="images/pet.webp" alt="" />
-            <img src="images/pet.webp" alt="" />
-            <img src="images/pet.webp" alt="" />
-            <img src="images/pet.webp" alt="" />
-            <img src="images/pet.webp" alt="" />
-            <img src="images/pet.webp" alt="" />
-            <img src="images/pet.webp" alt="" />
-            <img src="images/pet.webp" alt="" />
-            <img src="images/pet.webp" alt="" />
-            <img src="images/pet.webp" alt="" />
-            <img src="images/pet.webp" alt="" />
+          <div class="border p-5 rounded-xl max-h-screen overflow-y-auto">
+            <div id="liked-container" class="grid grid-cols-2 gap-4"></div>
           </div>
           <!-- card 4 end -->
         </div>
@@ -294,15 +206,14 @@
 
         <!-- modal start  -->
         <!-- Open the modal using ID.showModal() method -->
-        <button class="btn hidden" onclick="modalOpen.showModal()">open modal</button>
         <dialog id="modalOpen" class="modal">
           <div class="modal-box">
             <div id="modal-content"></div>
 
-            <div class="modal-action">
+            <div class="modal-action w-full block">
               <form method="dialog">
                 <!-- if there is a button in form, it will close the modal -->
-                <button class="btn">Close</button>
+                <button class="btn w-full" id="close-modal">Close</button>
               </form>
             </div>
           </div>

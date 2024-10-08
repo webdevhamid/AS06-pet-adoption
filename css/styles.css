@@ -1,2 +1,9 @@
 /* Lato font  */
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+/* Category button active class  */
+.active {
+  border-radius: 120px !important;
+  border: 1px solid #0e7a81;
+  background: #0e7a811a;
+}
