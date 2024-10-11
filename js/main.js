@@ -120,8 +120,8 @@ const loadPetById = async (petId) => {
 const displayLikedPet = (pet) => {
   const likedContainer = document.getElementById("liked-container");
   const petImage = `
-    <div class="h-[120px] rounded-lg overflow-hidden">
-    <img src="${pet.image}" class="h-full object-cover">
+    <div class="h-[120px]">
+    <img src="${pet.image}" class="h-full object-cover rounded-lg overflow-hidden">
     </div>
   `;
   likedContainer.insertAdjacentHTML("beforeend", petImage);
