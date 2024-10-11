@@ -25,4 +25,5 @@ Peddy is an all-in-one pet adoption platform where people can adopt various pets
 
 ## Live Link of the deployed project
 
-https://www.google.com
+Private Github Repo Link: https://github.com/programming-hero-web-course2/b10a6-pet-adoption-webdevhamid
+Live Website Link: https://peddy-hamid.netlify.app/
