@@ -1,11 +1,12 @@
-/**
- * 1. Load all pets data
- * 2. display each pet in a card
- */
-// Getting categories from API
 const modal = document.querySelector("#modalOpen");
 const modalContainer = document.querySelector("#modal-content");
+const spinner = document.querySelector(".loader");
+const petCard = document.querySelector("#pet-card");
+const cardContainer = document.querySelector("#card-container");
+const categoryNotFound = document.querySelector("#category-not-found");
+const cardWrapper = document.querySelector("#card-wrapper");
 
+// Load all the categories
 const loadCategories = async () => {
   try {
     const res = await fetch("https://openapi.programming-hero.com/api/peddy/categories");
@@ -18,7 +19,7 @@ const loadCategories = async () => {
 };
 loadCategories();
 
-// Getting all pets using API
+// Load all the pets data
 const loadAllPets = async () => {
   try {
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pets`);
@@ -31,6 +32,7 @@ const loadAllPets = async () => {
 };
 loadAllPets();
 
+// Remove all the category active button
 const removeActiveClass = () => {
   const allCategoryBtns = document.querySelectorAll(".category-btn");
 
@@ -39,15 +41,23 @@ const removeActiveClass = () => {
   });
 };
 
-// Getting pets based on category from the API
+// Load pets data based on category button
 const loadPetsCategory = async (id) => {
   try {
+    displaySpinner();
+
     // Remove active class from all buttons
     removeActiveClass();
 
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`);
     const data = await res.json();
-    displayPets(data.data);
+
+    setTimeout(() => {
+      spinner.classList.add("hidden");
+      petCard.classList.remove("hidden");
+
+      displayPets(data.data);
+    }, 2000);
 
     // Active the current button on click
     const categoryBtn = document.querySelector(`#btn-${id}`);
@@ -63,6 +73,7 @@ const loadPetsCategory = async (id) => {
 //     "category_icon": "https://i.ibb.co.com/N7dM2K1/cat.png"
 // },
 
+// Render the categories button dynamically
 const displayCategories = (categories) => {
   const categoryContainer = document.querySelector("#category-container");
   //   console.log(categories);
@@ -83,6 +94,7 @@ const displayCategories = (categories) => {
   });
 };
 
+// Load pets data by ID
 const loadPetById = async (petId) => {
   const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`);
   const data = await res.json();
@@ -90,6 +102,7 @@ const loadPetById = async (petId) => {
   displayLikedPet(data.petData);
 };
 
+// Render the pet liked thumbnail
 const displayLikedPet = (pet) => {
   const likedContainer = document.getElementById("liked-container");
   const petImage = `
@@ -101,6 +114,7 @@ const displayLikedPet = (pet) => {
   console.log(pet.image);
 };
 
+// Load the pets details
 const loadDetails = async (petId) => {
   try {
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`);
@@ -113,11 +127,12 @@ const loadDetails = async (petId) => {
   }
 };
 
+// Render the pet details on the modal on click
 const displayDetails = (pet) => {
   modalContainer.innerHTML = `
   <img src=${pet.image} class="h-[250px] w-full object-cover rounded-xl">
     <h2 class="text-xl font-extrabold my-2">${pet.pet_name}</h2>
-   <ul class="text-gray-color font-semibold text-base flex flex-col gap-1">
+   <ul class="text-gray-color font-semibold text-base grid grid-cols-2 gap-2">
               <li class="flex items-center gap-3">
                 <img src=${"images/category-icons/breed.png"}>
                 <span>Breed: ${!pet.breed ? "Not available" : pet.breed}</span>
@@ -150,12 +165,12 @@ const displayDetails = (pet) => {
   modal.showModal();
 };
 
+// Adoption Countdown timer
 const adoptionCountDown = (petId) => {
   const labelCountDown = document.querySelector("#countDownLabel");
   const labelAdoptionButton = document.querySelector(`#btn-${petId}`);
   const closeModal = document.querySelector("#close-modal");
 
-  // console.log(labelAdoptionButton);
   let count = 3;
   const countDown = () => {
     count--;
@@ -171,6 +186,7 @@ const adoptionCountDown = (petId) => {
   const timer = setInterval(countDown, 1000);
 };
 
+// Open the modal on click to adopt button
 const openAdoptionModal = (petId) => {
   modalContainer.innerHTML = `
     <h1 class="text-3xl font-[900] text-center">Congrates!</h1>
@@ -195,10 +211,15 @@ const openAdoptionModal = (petId) => {
 // "pet_name": "Sunny"
 // },
 
-const displayPets = (pets) => {
-  const cardContainer = document.querySelector("#card-container");
-  const categoryNotFound = document.querySelector("#category-not-found");
+// Render spinner
+const displaySpinner = () => {
+  // Render the spinner
+  spinner.classList.remove("hidden");
+  petCard.classList.add("hidden");
+};
 
+// Render all the pets data
+const displayPets = (pets) => {
   cardContainer.innerHTML = "";
 
   if (pets.length === 0) {
@@ -206,8 +227,8 @@ const displayPets = (pets) => {
     categoryNotFound.classList.remove("hidden");
     return;
   } else {
-    categoryNotFound.classList.add("hidden");
     cardContainer.classList.remove("hidden");
+    categoryNotFound.classList.add("hidden");
   }
 
   pets.forEach((pet) => {

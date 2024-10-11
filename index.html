@@ -167,15 +167,33 @@
       <!-- Adopt section end  -->
 
       <!-- card section start  -->
-      <section class="py-10">
+      <section class="py-10 min-h-screen">
         <!-- section title + button start -->
         <div class="flex justify-between items-center">
           <h1 class="font-extrabold text-2xl">Best Deal For You</h1>
           <button class="bg-primary-color text-white py-4 px-8 rounded-xl">Sort by Price</button>
         </div>
         <!-- section title + button end -->
+
+        <!-- Spinner  start -->
+        <div class="loader mx-auto hidden">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+          <div class="bar4"></div>
+          <div class="bar5"></div>
+          <div class="bar6"></div>
+          <div class="bar7"></div>
+          <div class="bar8"></div>
+          <div class="bar9"></div>
+          <div class="bar10"></div>
+          <div class="bar11"></div>
+          <div class="bar12"></div>
+        </div>
+        <!-- Spinner End -->
+
         <!-- card start  -->
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 py-5">
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 py-5" id="pet-card">
           <!-- card no information start  -->
           <div
             class="border px-5 py-20 rounded-xl col-span-3 bg-gray-100 max-h-[500px] hidden"
@@ -192,25 +210,29 @@
             </div>
           </div>
           <!-- card no information end  -->
+
+          <!-- Card container start  -->
           <div
             class="grid gap-6 lg:col-span-3 md:col-span-2 lg:grid-cols-3 md:grid-cols-2 grid-cols-1"
             id="card-container"
           ></div>
-          <!-- card 4 start -->
+          <!-- Card container end -->
+
+          <!-- card liked start -->
           <div class="border p-5 rounded-xl max-h-screen overflow-y-auto">
             <div id="liked-container" class="grid grid-cols-2 gap-4"></div>
           </div>
-          <!-- card 4 end -->
+          <!-- card liked end -->
         </div>
         <!-- card end  -->
 
         <!-- modal start  -->
         <!-- Open the modal using ID.showModal() method -->
         <dialog id="modalOpen" class="modal">
-          <div class="modal-box">
+          <div class="modal-box max-w-lg">
             <div id="modal-content"></div>
 
-            <div class="modal-action w-full block">
+            <div class="modal-action w-full block" id="modal-close-area">
               <form method="dialog">
                 <!-- if there is a button in form, it will close the modal -->
                 <button class="btn w-full" id="close-modal">Close</button>
@@ -240,12 +262,26 @@
           <p>Email: info@yourdomain.com</p>
           <p>Openings hours: 9.00 AM - 5.00 PM</p>
           <div>
-            <ul>
-              <li>
-                <a href="#">Facebook</a>
-                <a href="#">X</a>
-                <a href="#">YouTube</a>
-                <a href="#">Instagram</a>
+            <ul class="flex items-center gap-4">
+              <li class="w-[30px] h-[20px] object-cover">
+                <a href="#">
+                  <img src="images/social/facebook.png" alt="" />
+                </a>
+              </li>
+              <li class="w-[30px] h-[20px] object-cover">
+                <a href="#">
+                  <img src="images/social/youtube.png" alt="" />
+                </a>
+              </li>
+              <li class="w-[30px] h-[20px] object-cover">
+                <a href="#">
+                  <img src="images/social/instagram.png" alt="" />
+                </a>
+              </li>
+              <li class="w-[30px] h-[20px] object-cover">
+                <a href="#">
+                  <img src="images/social/twitter.png" alt="" />
+                </a>
               </li>
             </ul>
           </div>
