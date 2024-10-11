@@ -6,6 +6,7 @@ const petCard = document.querySelector("#pet-card");
 const cardContainer = document.querySelector("#card-container");
 const categoryNotFound = document.querySelector("#category-not-found");
 const cardWrapper = document.querySelector("#card-wrapper");
+const sortBtn = document.querySelector("#sort-btn");
 
 // Load all the categories
 const loadCategories = async () => {
@@ -25,8 +26,14 @@ const loadAllPets = async () => {
   try {
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pets`);
     const data = await res.json();
-    //   console.log(data);
+    // console.log(data.pets);
     displayPets(data.pets);
+
+    // Sorting Functionality on all pets
+    sortBtn.addEventListener("click", function () {
+      const sortedArray = sortPets(data.pets);
+      displayPets(sortedArray);
+    });
   } catch (err) {
     console.log(err);
   }
@@ -50,6 +57,10 @@ const loadPetsCategory = async (id) => {
     // Remove active class from all buttons
     removeActiveClass();
 
+    // Active the current button on click
+    const categoryBtn = document.querySelector(`#btn-${id}`);
+    categoryBtn.classList.add("active");
+
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`);
     const data = await res.json();
 
@@ -60,19 +71,22 @@ const loadPetsCategory = async (id) => {
       displayPets(data.data);
     }, 2000);
 
-    // Active the current button on click
-    const categoryBtn = document.querySelector(`#btn-${id}`);
-    categoryBtn.classList.add("active");
+    // Sorting Functionality on category specific
+    sortBtn.addEventListener("click", function () {
+      const sortedArray = sortPets(data.data);
+      displayPets(sortedArray);
+    });
+
+    // console.log(data.data);
   } catch (err) {
     console.log(err);
   }
 };
 
-// {
-//     "id": 1,
-//     "category": "Cat",
-//     "category_icon": "https://i.ibb.co.com/N7dM2K1/cat.png"
-// },
+// Sorting pets
+const sortPets = function (pets) {
+  return pets.sort((a, b) => b.price - a.price);
+};
 
 // Render the categories button dynamically
 const displayCategories = (categories) => {
@@ -80,7 +94,6 @@ const displayCategories = (categories) => {
   //   console.log(categories);
 
   categories.forEach((category) => {
-    console.log(category);
     // console.log(category);
     const categoryItem = document.createElement("div");
 
