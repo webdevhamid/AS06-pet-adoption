@@ -1,5 +1,6 @@
 const modal = document.querySelector("#modalOpen");
 const modalContainer = document.querySelector("#modal-content");
+const modalCloseButton = document.querySelector("#modal-close-area");
 const spinner = document.querySelector(".loader");
 const petCard = document.querySelector("#pet-card");
 const cardContainer = document.querySelector("#card-container");
@@ -129,6 +130,7 @@ const loadDetails = async (petId) => {
 
 // Render the pet details on the modal on click
 const displayDetails = (pet) => {
+  modalCloseButton.classList.remove("hidden");
   modalContainer.innerHTML = `
   <img src=${pet.image} class="h-[250px] w-full object-cover rounded-xl">
     <h2 class="text-xl font-extrabold my-2">${pet.pet_name}</h2>
@@ -188,6 +190,7 @@ const adoptionCountDown = (petId) => {
 
 // Open the modal on click to adopt button
 const openAdoptionModal = (petId) => {
+  modalCloseButton.classList.add("hidden");
   modalContainer.innerHTML = `
     <h1 class="text-3xl font-[900] text-center">Congrates!</h1>
     <p class="text-xl text-center mt-2">Adoption process is start for your pet...</p>
